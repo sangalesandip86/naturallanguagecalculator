@@ -1,6 +1,6 @@
 # naturallanguagecalculator
 
-Clone and Download
+Clone or Download
 
 1) Unzip project folder
 2) Open Eclipse

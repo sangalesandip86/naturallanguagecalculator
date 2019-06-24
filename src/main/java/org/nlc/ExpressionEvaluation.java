@@ -43,6 +43,9 @@ public class ExpressionEvaluation {
 			}
 		}
 		if (operator == '+') {
+			if (leftVal < 0) {
+				return evaluate(expression) - leftVal;
+			}
 			return leftVal + evaluate(expression);
 		} else {
 			return leftVal - evaluate(expression);
@@ -52,37 +55,9 @@ public class ExpressionEvaluation {
 
 	private double getNextOperand(String[] exp) {
 		double res;
-		if (exp[0].startsWith("(")) {
-			int open = 1;
-			int i = 1;
-			while (open != 0) {
-				if (exp[0].charAt(i) == '(') {
-					open++;
-				} else if (exp[0].charAt(i) == ')') {
-					open--;
-				}
-				i++;
-			}
-			res = evaluate(exp[0].substring(1, i - 1));
-			exp[0] = exp[0].substring(i);
-		} else {
-			int i = 1;
-			if (exp[0].charAt(0) == '-') {
-				i++;
-			}
-			while (exp[0].length() > i && isNumber((int) exp[0].charAt(i))) {
-				i++;
-			}
-			res = Double.parseDouble(exp[0].substring(0, i));
-			exp[0] = exp[0].substring(i);
-		}
+		int i = 1;
+		res = Double.parseDouble(exp[0].substring(0, i));
+		exp[0] = exp[0].substring(i);
 		return res;
 	}
-
-	private static boolean isNumber(int c) {
-		int zero = (int) '0';
-		int nine = (int) '9';
-		return (c >= zero && c <= nine) || c == '.';
-	}
-
 }

@@ -37,4 +37,16 @@ public class NaturalLanguageDictionaryTest {
 		// Then
 		assertEquals(expectedExpression, actualExpression);
 	}
+
+	@Test
+	public void testCapitalSmallCombination() {
+		// Given
+		String expression = "ONE over EighT";
+		String expectedExpression = "1/8";
+
+		// When
+		String actualExpression = naturalLanguageDictionary.convertNCLToMathsExpression(expression);
+		// Then
+		assertEquals(expectedExpression, actualExpression);
+	}
 }

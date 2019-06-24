@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.nlc.common.NaturalLanguageDictionary;
+
 /**
  * 
  * @author sandip.p.sangale
@@ -24,7 +25,7 @@ public class InputProcessor {
 	public boolean validate(String expression) {
 		Set<String> vocabularySet = new HashSet<>();
 
-		String[] splited = expression.split("\\s+");
+		String[] splited = expression.toLowerCase().split("\\s+");
 		Map<String, String> numbersVocab = this.naturalLanguageDictionary.getNumbersVocabulary();
 
 		vocabularySet.addAll(numbersVocab.keySet());

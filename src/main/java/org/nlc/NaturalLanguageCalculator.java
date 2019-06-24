@@ -3,9 +3,10 @@ package org.nlc;
 import java.util.Scanner;
 
 import org.nlc.common.NaturalLanguageDictionary;
+
 /**
- * Main class to execute expression,
- * It process mathematical expression given in natural language form.
+ * Main class to execute expression, It process mathematical expression given in
+ * natural language form.
  * 
  * @author sandip.p.sangale
  *
@@ -19,8 +20,8 @@ public class NaturalLanguageCalculator {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValid = false;
+		printMessage("Enter Expression : ");
 		do {
-			printMessage("Enter Expression : ");
 			String naturalExpression = scanner.nextLine();
 			isValid = inputProcessor.validate(naturalExpression);
 			if (isValid) {
@@ -29,7 +30,7 @@ public class NaturalLanguageCalculator {
 				Double result = expressionEvaluation.evaluate(mathsExpression);
 				printMessage("Result : " + result);
 			} else {
-				printMessage("Invalid Expression");
+				printMessage("Invalid Expression, Please enter again : ");
 			}
 		} while (!isValid);
 		scanner.close();

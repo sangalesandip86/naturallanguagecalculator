@@ -9,7 +9,8 @@ import org.nlc.exceptions.InvalidExpressionException;
 
 /**
  * 
- * This class contain methods to provide vocabulary of operators and numbers allowed in expression.
+ * This class contain methods to provide vocabulary of operators and numbers
+ * allowed in expression.
  * 
  * @author sandip.p.sangale
  *
@@ -51,7 +52,8 @@ public class NaturalLanguageDictionary {
 		if (expression == null) {
 			throw new InvalidExpressionException(EXPRESSION_IS_NULL);
 		}
-		expression = convertWordOperatorsToOperator(expression);
+		expression = expression.toLowerCase();
+		expression = convertWordOperatorsToOperator(expression.toLowerCase());
 		expression = expression.replaceAll("\\s+", BLANK);
 		return convertWordsToNumbers(expression);
 	}

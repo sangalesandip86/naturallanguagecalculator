@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+
 /**
  * 
  * @author sandip.p.sangale
@@ -49,6 +50,11 @@ public class ExpressionEvaluationTest {
 	@Test
 	public void calculate_simple_expression_with_negative_result() {
 		assertEquals(-12, expressionEvaluation.evaluate("9-3*7"), 0.1);
+	}
+
+	@Test
+	public void calculate_simple_expression_with_brackets() {
+		assertEquals(7, expressionEvaluation.evaluate("(1+(3*2))"), 0.1);
 	}
 
 }

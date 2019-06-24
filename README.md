@@ -1,5 +1,4 @@
 # naturallanguagecalculator
-Natural Language calculator
 
 To run program 
 

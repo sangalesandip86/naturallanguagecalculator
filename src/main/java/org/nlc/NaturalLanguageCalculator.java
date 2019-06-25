@@ -15,7 +15,7 @@ public class NaturalLanguageCalculator {
 
 	private static InputProcessor inputProcessor = new InputProcessor();
 	private static NaturalLanguageDictionary naturalLanguageDictionary = new NaturalLanguageDictionary();
-	private static ExpressionEvaluation expressionEvaluation = new ExpressionEvaluation();
+	private static ExpressionEvaluator expressionEvaluation = new ExpressionEvaluator();
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);

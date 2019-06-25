@@ -12,9 +12,9 @@ import org.mockito.runners.MockitoJUnitRunner;
  *
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ExpressionEvaluationTest {
+public class ExpressionEvaluatorTest {
 
-	private ExpressionEvaluation expressionEvaluation = new ExpressionEvaluation();
+	private ExpressionEvaluator expressionEvaluation = new ExpressionEvaluator();
 
 	@Test
 	public void testEvaluateAdd() {
@@ -54,7 +54,10 @@ public class ExpressionEvaluationTest {
 
 	@Test
 	public void calculate_simple_expression_with_brackets() {
-		assertEquals(7, expressionEvaluation.evaluate("(1+(3*2))"), 0.1);
+		assertEquals(7, expressionEvaluation.evaluate("1+3*2"), 0.1);
 	}
-
+	@Test
+	public void calculate_simple_expression_with_bracket() {
+		assertEquals(50, expressionEvaluation.evaluate("4-8+6*9"), 0.1);
+	}
 }

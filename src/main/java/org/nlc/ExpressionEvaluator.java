@@ -14,6 +14,7 @@ public class ExpressionEvaluator {
 	 * 
 	 * @param expression
 	 * @return
+	 * @throws Exception
 	 */
 	public double evaluate(String expression) {
 		Deque<Integer> op = new LinkedList<>();
@@ -45,6 +46,9 @@ public class ExpressionEvaluator {
 				double v2 = val.pop();
 				if (optr == operators[i]) {
 					if (i == 0) {
+						if (v1 == 0) {
+							throw new ArithmeticException("Denominator Cannot be Zero");
+						}
 						valtmp.push(v2 / v1);
 						it = true;
 						break;

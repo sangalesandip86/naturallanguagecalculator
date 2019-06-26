@@ -26,11 +26,10 @@ public class NaturalLanguageCalculator {
 			isValid = inputProcessor.validate(naturalExpression);
 			if (isValid) {
 				String mathsExpression = naturalLanguageDictionary.convertNCLToMathsExpression(naturalExpression);
-				printMessage(mathsExpression);
 				Double result = expressionEvaluation.evaluate(mathsExpression);
 				printMessage("Result : " + result);
 			} else {
-				printMessage("Invalid Expression, Please enter again : ");
+				printMessage("Invalid Expression");
 			}
 		} while (!isValid);
 		scanner.close();

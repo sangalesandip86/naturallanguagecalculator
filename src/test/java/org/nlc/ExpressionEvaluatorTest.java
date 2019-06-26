@@ -2,62 +2,42 @@ package org.nlc;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.runners.Parameterized;
 
 /**
  * 
  * @author sandip.p.sangale
  *
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(Parameterized.class)
 public class ExpressionEvaluatorTest {
+	private String inputExpression;
+	private double expectedResult;
+	private ExpressionEvaluator expressionEvaluation;
 
-	private ExpressionEvaluator expressionEvaluation = new ExpressionEvaluator();
+	@Before
+	public void initialize() {
+		expressionEvaluation = new ExpressionEvaluator();
+	}
 
-	@Test
-	public void testEvaluateAdd() {
-		// Given
-		String mathsExpression = "1+6";
-		double expectedResult = 7;
-		// When
-		double actualResult = this.expressionEvaluation.evaluate(mathsExpression);
-		// Then
-		assertEquals(expectedResult, actualResult, 0);
+	public ExpressionEvaluatorTest(String inputExpression, double expectedResult) {
+		this.inputExpression = inputExpression;
+		this.expectedResult = expectedResult;
+	}
+
+	@Parameterized.Parameters
+	public static Object primeNumbers() {
+		return Arrays.asList(new Object[][] { { "9/8+4*2/3", 3.79 }, { "1+6", 7 }, { "1+2*3", 7 }, { "9-3*7", -12 },
+				{ "4-8+6*9", 50 }, { "7/9+2", 2.78 } });
 	}
 
 	@Test
-	public void calculate_simple_expression_with_different_operator_priority() {
-		assertEquals(7, expressionEvaluation.evaluate("1+2*3"), 0);
-	}
-
-	@Test
-	public void calculate_one_number() {
-		assertEquals(3, expressionEvaluation.evaluate("3"), 0);
-	}
-
-	@Test
-	public void calculate_simple_expression() {
-		assertEquals(5, expressionEvaluation.evaluate("3+2"), 0);
-	}
-
-	@Test
-	public void calculate_simple_expression_with_all_operator() {
-		assertEquals(3.79, expressionEvaluation.evaluate("9/8+4*2/3"), 0.1);
-	}
-
-	@Test
-	public void calculate_simple_expression_with_negative_result() {
-		assertEquals(-12, expressionEvaluation.evaluate("9-3*7"), 0.1);
-	}
-
-	@Test
-	public void calculate_simple_expression_with_brackets() {
-		assertEquals(7, expressionEvaluation.evaluate("1+3*2"), 0.1);
-	}
-	@Test
-	public void calculate_simple_expression_with_bracket() {
-		assertEquals(50, expressionEvaluation.evaluate("4-8+6*9"), 0.1);
+	public void testEvaluation() {
+		assertEquals(expectedResult, expressionEvaluation.evaluate(inputExpression), 0.1);
 	}
 }
